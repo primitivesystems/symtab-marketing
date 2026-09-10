@@ -19,5 +19,11 @@
   },
   "rtl": true,
   "menuColor": "default",
-  "menuAccent": "subtle"
+  "menuAccent": "subtle",
+  "registries": {
+    "@iconiq": "https://iconiqui.com/r/{name}.json",
+    "@reui": "https://reui.io/r/{style}/{name}.json",
+    "@skiper-ui": "https://skiper-ui.com/registry/{name}.json",
+    "@componentry": "https://componentry.fun/r/{name}.json"
+  }
 }

@@ -10,9 +10,13 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
+    "@thesvg/react": "^3.3.3",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.2.6",
+    "framer-motion": "^13.2.0",
     "lucide-react": "^1.43.0",
+    "motion": "^13.2.0",
+    "next": "16.2.6",
     "next-themes": "^0.4.6",
     "react": "19.2.4",
     "react-dom": "19.2.4",
@@ -36,6 +40,7 @@
     "./globals.css": "./src/styles/globals.css",
     "./postcss.config": "./postcss.config.mjs",
     "./lib/*": "./src/lib/*.ts",
+    "./components/config/*": "./src/components/config/*.ts",
     "./components/*": "./src/components/*.tsx",
     "./hooks/*": "./src/hooks/*.ts"
   }

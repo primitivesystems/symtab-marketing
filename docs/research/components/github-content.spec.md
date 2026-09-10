@@ -1,0 +1,9 @@
+# GitHub content contract
+
+Server-side data only, no visual component. Source: public wizaye/project-flux repository already used in this app. Replace hand-authored releases and speculative roadmap data with cached REST fetches. Preserve contributors snapshot exports used by community section.
+
+Export Release { id:number, tag:string, title:string, date:string, body:string, url:string, prerelease:boolean }; getReleases(): Promise<{items:Release[], unavailable:boolean}>. Exclude drafts, newest published first. Published titles and complete Markdown body unchanged. Export getRelease(tag): lookup from paginated release list or tag endpoint.
+
+Export RoadmapItem {number:number,title:string,url:string,kind:'issue'|'pull',author:string,labels:string[],date:string,comments:number}; getRoadmap(): Promise<{columns:{title:string,tone:string,description:string,items:RoadmapItem[]}[],unavailable:boolean}>. Columns Open issues (open issues excluding PRs), In review (open non-draft PRs), Merged (merged PRs only). Do not label closed-unmerged PRs as shipped. Real label/title/author/date/comment metadata. Draft PRs can be a fourth Draft column only when any exist. No invented features. Cap each endpoint at100 and clearly expose truncated boolean if additional pages not fetched; ideally paginate bounded and note ceiling. Use Next fetch 300-second revalidation, request timeout, optional server-only GITHUB_TOKEN, handle API failures honestly (no fabricated fallback), validate required fields, no raw response/secrets logged.
+
+Use apps/web/lib/github.ts and one runnable assert test. Do not change existing project-content.ts or its test; parent handles removal. UI uses these contracts. Read relevant installed Next docs first, use apply_patch, run bun run typecheck (parent UI may concurrently change).
